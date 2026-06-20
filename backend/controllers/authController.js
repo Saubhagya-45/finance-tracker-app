@@ -19,10 +19,13 @@ const signup = async (req, res) => {
             (err, result) => {
 
                 if (err) {
-                    return res.status(500).json({
-                        message: "User already exists or database error"
-                    });
-                }
+
+    console.log("SIGNUP ERROR:", err);
+
+    return res.status(500).json({
+        message: err.sqlMessage || err.message
+    });
+}
 
                 res.status(201).json({
                     message: "User registered successfully"
@@ -48,10 +51,13 @@ const login = (req, res) => {
     db.query(sql, [email], async (err, results) => {
 
         if (err) {
-            return res.status(500).json({
-                message: "Database Error"
-            });
-        }
+
+    console.log("LOGIN ERROR:", err);
+
+    return res.status(500).json({
+        message: err.sqlMessage || err.message
+    });
+}
 
         if (results.length === 0) {
             return res.status(404).json({
