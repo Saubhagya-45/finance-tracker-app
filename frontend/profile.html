@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>My Profile</title>
+
+<link rel="stylesheet"
+      href="css/profile.css">
+
+</head>
+
+<body>
+<div class="profile-container">
+
+    <div class="profile-card">
+
+        <h1>👤 My Profile</h1>
+
+        <p class="subtitle">
+            Manage your account information
+        </p>
+
+        <form id="profile-form">
+
+            <div class="input-group">
+
+                <label>Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Name"
+                    required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                    readonly>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>New Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Leave blank to keep current password">
+
+            </div>
+
+            <button
+                type="submit"
+                class="update-btn">
+
+                Update Profile
+
+            </button>
+
+        </form>
+
+        <button
+            id="back-btn">
+
+            ← Back To Dashboard
+
+        </button>
+
+    </div>
+
+</div>
+
+<script src="js/profile.js"></script>
+</body>
+
+</html>
