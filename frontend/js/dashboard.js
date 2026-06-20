@@ -69,7 +69,7 @@ async (e) => {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/transactions",
+            "https://finance-tracker-backend-voau.onrender.com/api/transactions",
             {
                 method: "POST",
                 headers: {
@@ -262,7 +262,7 @@ try {
     const userId = localStorage.getItem("userId");
 
     const response = await fetch(
-        `http://localhost:5000/api/transactions/${userId}`
+        `https://finance-tracker-backend-voau.onrender.com/api/transactions/${userId}`
     );
 
     const transactions =
@@ -421,7 +421,7 @@ if (!category) return;
 try {
 
     const response = await fetch(
-        `http://localhost:5000/api/transactions/${id}`,
+        `https://finance-tracker-backend-voau.onrender.com/api/transactions/${id}`,
         {
             method: "PUT",
             headers: {
@@ -468,7 +468,7 @@ if (!confirmDelete) return;
 try {
 
     const response = await fetch(
-        `http://localhost:5000/api/transactions/${id}`,
+        `https://finance-tracker-backend-voau.onrender.com/api/transactions/${id}`,
         {
             method: "DELETE"
         }
@@ -516,7 +516,7 @@ if (budgetForm) {
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/budgets",
+                        "https://finance-tracker-backend-voau.onrender.com/api/budgets",
                         {
                             method: "POST",
 
@@ -568,7 +568,7 @@ async function loadBudgets() {
 
         const response =
             await fetch(
-                `http://localhost:5000/api/budgets/${userId}`
+                `https://finance-tracker-backend-voau.onrender.com/api/budgets/${userId}`
             );
 
         const budgets =

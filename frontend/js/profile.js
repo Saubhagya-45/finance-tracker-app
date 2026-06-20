@@ -31,7 +31,7 @@ async function loadProfile() {
 try {
 
     const response = await fetch(
-        `http://localhost:5000/api/users/${userId}`
+        `https://finance-tracker-backend-voau.onrender.com/api/users/${userId}`
     );
 
     const user =
@@ -77,7 +77,7 @@ async (e) => {
 
         const response =
             await fetch(
-                `http://localhost:5000/api/users/${userId}`,
+                `https://finance-tracker-backend-voau.onrender.com/api/users/${userId}`,
                 {
                     method: "PUT",
 

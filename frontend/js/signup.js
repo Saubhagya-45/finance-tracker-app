@@ -17,7 +17,7 @@ signupForm.addEventListener("submit", async (e) => {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/auth/signup",
+            "https://finance-tracker-backend-voau.onrender.com/api/auth/signup",
             {
                 method: "POST",
                 headers: {

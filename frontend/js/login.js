@@ -10,7 +10,7 @@ loginForm.addEventListener("submit", async (e) => {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/auth/login",
+            "https://finance-tracker-backend-voau.onrender.com/api/auth/login",
             {
                 method: "POST",
                 headers: {
