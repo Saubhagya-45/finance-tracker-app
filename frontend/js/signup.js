@@ -4,13 +4,13 @@ signupForm.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirm-password").value;
 
     if (password !== confirmPassword) {
-        alert("Passwords do not match");
+        alert("Passwords do not match!");
         return;
     }
 
@@ -33,16 +33,25 @@ signupForm.addEventListener("submit", async (e) => {
 
         const data = await response.json();
 
-        alert(data.message);
-
         if (response.ok) {
-            window.location.href = "index.html";
+
+            alert("Account created successfully! Redirecting to Login Page...");
+
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 1500);
+
+        } else {
+
+            alert(data.message);
+
         }
 
     } catch (error) {
 
-        console.error(error);
-        alert("Something went wrong");
+        console.error("Signup Error:", error);
+
+        alert("Server Error. Please try again later.");
 
     }
 
