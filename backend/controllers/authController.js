@@ -20,12 +20,18 @@ const signup = async (req, res) => {
 
                 if (err) {
 
-    console.log("SIGNUP ERROR:", err);
+                    console.log("SIGNUP ERROR:", err);
 
-    return res.status(500).json({
-        message: err.sqlMessage || err.message
-    });
-}
+                    if (err.code === "ER_DUP_ENTRY") {
+                        return res.status(400).json({
+                            message: "Email already registered"
+                        });
+                    }
+
+                    return res.status(500).json({
+                        message: "Database Error"
+                    });
+                }
 
                 res.status(201).json({
                     message: "User registered successfully"
@@ -34,6 +40,8 @@ const signup = async (req, res) => {
         );
 
     } catch (error) {
+
+        console.log(error);
 
         res.status(500).json({
             message: "Server Error"
@@ -52,14 +60,15 @@ const login = (req, res) => {
 
         if (err) {
 
-    console.log("LOGIN ERROR:", err);
+            console.log("LOGIN ERROR:", err);
 
-    return res.status(500).json({
-        message: err.sqlMessage || err.message
-    });
-}
+            return res.status(500).json({
+                message: "Database Error"
+            });
+        }
 
         if (results.length === 0) {
+
             return res.status(404).json({
                 message: "User not found"
             });
@@ -73,30 +82,32 @@ const login = (req, res) => {
         );
 
         if (!isMatch) {
+
             return res.status(401).json({
                 message: "Invalid Password"
             });
         }
 
         const token = jwt.sign(
-    {
-        id: user.id,
-        email: user.email
-    },
-    process.env.JWT_SECRET,
-    {
-        expiresIn: "1d"
-    }
-);
+            {
+                id: user.id,
+                email: user.email
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: "1d"
+            }
+        );
 
         res.status(200).json({
-    message: "Login Successful",
-    token,
-    userId: user.id
-});
+            message: "Login Successful",
+            token,
+            userId: user.id
+        });
 
     });
 };
+
 module.exports = {
     signup,
     login
